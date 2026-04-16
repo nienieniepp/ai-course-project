@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Facial Emotion Recognition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Facial Emotion Recognition</h1>
+      <p>Upload one face image to predict the emotion class.</p>
+
+      <form method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required />
+        <button type="submit">Predict Emotion</button>
+      </form>
+
+      {% if error %}
+      <p class="error">{{ error }}</p>
+      {% endif %}
+
+      {% if image_url %}
+      <h2>Uploaded Image</h2>
+      <img src="{{ image_url }}" alt="Uploaded face" class="preview" />
+      {% endif %}
+
+      {% if result %}
+      <h2>Prediction Result</h2>
+      <p><strong>Predicted Emotion:</strong> {{ result.predicted_label }}</p>
+
+      <h3>Class Probabilities</h3>
+      <ul>
+        {% for item in result.probabilities %}
+        <li>{{ item.label }}: {{ item.probability }}%</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </body>
+</html>
