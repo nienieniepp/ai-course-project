@@ -9,6 +9,8 @@ It aims to:
 
 The current version is an **initial skeleton** designed for the next step: dataset loading, training, and iterative improvements.
 
+The current version includes a working dataset pipeline (`ImageFolder`) and a small CNN baseline so you can start training immediately.
+
 ## Folder Structure
 ```text
 ai-course-project/
