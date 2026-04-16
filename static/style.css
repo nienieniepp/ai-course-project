@@ -6,33 +6,31 @@ body {
 }
 
 .container {
-  max-width: 720px;
-  margin: 40px auto;
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  max-width: 760px;
+  margin: 32px auto;
+  padding: 0 16px;
 }
 
-h1,
-h2,
-h3 {
-  margin-top: 0;
+.subtitle {
+  margin-top: -6px;
+  margin-bottom: 20px;
+  color: #4b5563;
 }
 
-form {
+.upload-form {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   align-items: center;
-  margin-bottom: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 button {
   background: #2563eb;
-  color: #fff;
+  color: white;
   border: none;
   border-radius: 6px;
-  padding: 10px 14px;
+  padding: 9px 14px;
   cursor: pointer;
 }
 
@@ -40,9 +38,50 @@ button:hover {
   background: #1d4ed8;
 }
 
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
 .preview {
-  max-width: 240px;
+  max-width: 280px;
+  width: 100%;
   border-radius: 8px;
+}
+
+.probability-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.probability-list li {
+  margin-bottom: 12px;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.value {
+  float: right;
+}
+
+.bar {
+  margin-top: 6px;
+  width: 100%;
+  height: 10px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: #2563eb;
 }
 
 .error {

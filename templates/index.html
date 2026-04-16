@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
   </head>
   <body>
-    <div class="container">
+    <main class="container">
       <h1>Facial Emotion Recognition</h1>
-      <p>Upload one face image to predict the emotion class.</p>
+      <p class="subtitle">Upload a face image to predict the emotion.</p>
 
-      <form method="post" enctype="multipart/form-data">
+      <form method="post" enctype="multipart/form-data" class="upload-form">
         <input type="file" name="image" accept="image/*" required />
-        <button type="submit">Predict Emotion</button>
+        <button type="submit">Predict</button>
       </form>
 
       {% if error %}
@@ -21,21 +21,31 @@
       {% endif %}
 
       {% if image_url %}
-      <h2>Uploaded Image</h2>
-      <img src="{{ image_url }}" alt="Uploaded face" class="preview" />
+      <section class="card">
+        <h2>Uploaded Image</h2>
+        <img src="{{ image_url }}" alt="Uploaded face" class="preview" />
+      </section>
       {% endif %}
 
       {% if result %}
-      <h2>Prediction Result</h2>
-      <p><strong>Predicted Emotion:</strong> {{ result.predicted_label }}</p>
+      <section class="card">
+        <h2>Prediction</h2>
+        <p><strong>Predicted Emotion:</strong> {{ result.predicted_label }}</p>
 
-      <h3>Class Probabilities</h3>
-      <ul>
-        {% for item in result.probabilities %}
-        <li>{{ item.label }}: {{ item.probability }}%</li>
-        {% endfor %}
-      </ul>
+        <h3>Probabilities</h3>
+        <ul class="probability-list">
+          {% for item in result.probabilities %}
+          <li>
+            <span class="label">{{ item.label }}</span>
+            <span class="value">{{ item.probability }}%</span>
+            <div class="bar">
+              <div class="fill" style="width: {{ item.probability }}%"></div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
       {% endif %}
-    </div>
+    </main>
   </body>
 </html>
