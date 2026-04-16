@@ -1,17 +1,43 @@
 # Deep Learning-based Facial Emotion Recognition (FER-2013 + Flask)
 
-## Project Goal
-This project is a beginner-friendly university AI for Digital Media course project.
-It aims to:
-- train a simple CNN model for facial emotion recognition using FER-2013,
-- support single-image prediction,
-- provide a basic Flask web interface for uploading an image and showing results.
+## Objective
+This course project builds a beginner-friendly facial emotion recognition system for AI in Digital Media.
+The objective is to:
+- train a small CNN on FER-2013 style data,
+- evaluate model behavior with clear visual results,
+- provide single-image prediction through CLI and Flask UI.
 
-The current version is an **initial skeleton** designed for the next step: dataset loading, training, and iterative improvements.
+## Method
+### 1) Dataset pipeline
+- Data format: `ImageFolder` (`data/train`, `data/val`)
+- Transform: grayscale, resize to `48x48`, normalize
 
-The current version includes a working dataset pipeline (`ImageFolder`) and a small CNN baseline so you can start training immediately.
+### 2) Model
+- A simple PyTorch CNN baseline (`EmotionCNN`) with small convolution blocks
+- Designed for readability and fast course-level experiments
 
-## Folder Structure
+### 3) Training and evaluation
+- Train/validation loop with epoch metrics (loss + accuracy)
+- Best model saved to `models/emotion_cnn.pth`
+- Evaluation visuals saved to `results/`:
+  - `training_curves.png`
+  - `confusion_matrix.png`
+
+## Results (What to Present)
+After running training, report:
+- best validation accuracy
+- training/validation loss and accuracy curves
+- confusion matrix insights (which emotions are confused)
+
+> Tip: Replace this section with your actual scores and screenshots before final submission.
+
+## Conclusion
+This project provides a clean baseline for FER-2013 emotion recognition and a simple Flask demo.
+It is intentionally small, readable, and easy to extend in later iterations.
+
+---
+
+## Project Structure
 ```text
 ai-course-project/
 ├── app.py
@@ -22,8 +48,10 @@ ai-course-project/
 ├── utils.py
 ├── requirements.txt
 ├── README.md
-├── models/                 # saved model weights (emotion_cnn.pth)
-├── uploads/                # uploaded images from web UI
+├── PRESENTATION_OUTLINE.md
+├── models/                  # saved model weights
+├── results/                 # curves and confusion matrix images
+├── uploads/                 # uploaded images from web UI
 ├── templates/
 │   └── index.html
 └── static/
@@ -31,16 +59,11 @@ ai-course-project/
 ```
 
 ## Setup
-1. Create and activate a Python virtual environment (recommended).
-2. Install dependencies:
-
 ```bash
 pip install -r requirements.txt
 ```
 
-## Expected Dataset Layout (next step)
-Use ImageFolder format under `data/`:
-
+## Dataset Layout
 ```text
 data/
 ├── train/
@@ -53,41 +76,22 @@ data/
     └── ...
 ```
 
-Images are transformed to grayscale, resized to 48x48, and normalized.
-
-## Run Commands
-### 1) Train baseline model
+## Run
+### Train
 ```bash
 python train.py --data_dir data --epochs 10 --batch_size 64 --lr 0.001
 ```
-The script prints train/validation loss and accuracy each epoch and saves the best validation model.
 
-Best model weights are saved to:
-
-```text
-models/emotion_cnn.pth
-```
-
-### 2) Predict one image from command line
+### Predict single image
 ```bash
 python predict.py --image path/to/your_image.jpg --model models/emotion_cnn.pth
 ```
-Outputs:
-- predicted emotion label,
-- class probabilities.
 
-### 3) Start Flask web app
+### Start Flask app
 ```bash
 python app.py
 ```
-Open in browser:
+Then open: `http://127.0.0.1:5000`
 
-```text
-http://127.0.0.1:5000
-```
-
-## Notes for Next Step
-- Add real FER-2013 dataset files under `data/train` and `data/val`.
-- Train and evaluate baseline CNN.
-- Improve UI and evaluation reports gradually.
-- Keep code simple and readable for course use.
+## Presentation Outline
+See: `PRESENTATION_OUTLINE.md`
