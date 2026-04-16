@@ -58,8 +58,10 @@ Images are transformed to grayscale, resized to 48x48, and normalized.
 ## Run Commands
 ### 1) Train baseline model
 ```bash
-python train.py --data_dir data --epochs 10 --batch_size 64
+python train.py --data_dir data --epochs 10 --batch_size 64 --lr 0.001
 ```
+The script prints train/validation loss and accuracy each epoch and saves the best validation model.
+
 Best model weights are saved to:
 
 ```text
