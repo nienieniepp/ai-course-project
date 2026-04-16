@@ -70,7 +70,7 @@ models/emotion_cnn.pth
 
 ### 2) Predict one image from command line
 ```bash
-python predict.py --image path/to/your_image.jpg
+python predict.py --image path/to/your_image.jpg --model models/emotion_cnn.pth
 ```
 Outputs:
 - predicted emotion label,
